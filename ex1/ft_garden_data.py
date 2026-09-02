@@ -14,13 +14,19 @@ class Plant:
 		return self.age
 
 	def set_age(self, age: int) -> None:
-		self.age = age
+		if age < 0:
+			print("Error: Age cannot be negative")
+			return
+		self._age = age
 
 	def get_height(self) -> int:
 		return self.height
 
 	def set_height(self, height: int) -> None:
-		self.height = height
+		if height < 0:
+			print("Error: Height cannot be negative")
+			return
+		self._height = height
 
 	def show(self) -> None:
 		print(f"{self.get_name()}: {self.get_height()}cm, "
