@@ -17,7 +17,7 @@ print("=== Flower")
 
 rose = Flower("Rose", 15, 10, "red")
 rose.show()
-
+print("Rose has not bloomed yet")
 print("[statistics for Rose]")
 print(
 	f"Stats: {rose.get_stats().get_grow_count()} grow, "
@@ -27,8 +27,8 @@ print(
 
 print("[asking the rose to grow and bloom]")
 rose.grow(1, 8)
-rose.bloom()
 rose.show()
+rose.bloom()
 
 print("[statistics for Rose]")
 print(
@@ -46,9 +46,9 @@ print("[statistics for Oak]")
 print(
 	f"Stats: {oak.get_stats().get_grow_count()} grow, "
 	f"{oak.get_stats().get_age_count()} age, "
-	f"{oak.get_stats().get_show_count()} show "
-	f"{oak.get_stats().get_shade_count()} shade"
+	f"{oak.get_stats().get_show_count()} show"
 )
+print(f"{oak.get_stats().get_shade_count()} shade")
 
 print("[asking the oak to produce shade]")
 oak.produce_shade()
@@ -57,16 +57,17 @@ print("[statistics for Oak]")
 print(
 	f"Stats: {oak.get_stats().get_grow_count()} grow, "
 	f"{oak.get_stats().get_age_count()} age, "
-	f"{oak.get_stats().get_show_count()} show "
-	f"{oak.get_stats().get_shade_count()} shade"
+	f"{oak.get_stats().get_show_count()} show"
 )
+print(f"{oak.get_stats().get_shade_count()} shade")
 
 print("=== Seed")
 
 sunflower = Seed("Sunflower", 80, 45, "yellow", 0)
 sunflower.show()
-
+print("Sunflower has not bloomed yet")
 print("[make sunflower grow, age and bloom]")
+
 sunflower.grow(1, 30)
 sunflower.age(20)
 sunflower.set_seed_count(42)
