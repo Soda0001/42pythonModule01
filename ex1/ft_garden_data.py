@@ -62,7 +62,7 @@ class Plant:
 
 	@classmethod
 	def create_anonymous(cls) -> "Plant":
-		return cls("Unknown", 0, 0)
+		return cls("Unknown plant", 0, 0)
 
 	def get_stats(self) -> "Plant.Stats":
 		return self._stats
