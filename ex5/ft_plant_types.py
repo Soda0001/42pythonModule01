@@ -26,13 +26,20 @@ class Seed(Flower):
 		super().__init__(name, height, age, color)
 		self._seed_count = seed_count
 
+	def get_seed_count(self) -> int:
+		return self._seed_count
+
+	def set_seed_count(self, seed_count: int) -> None:
+		self._seed_count = seed_count
+
 	def show(self) -> None:
 		super().show()
-		print(f"Seeds: {self._seed_count}")
+		print(f"Seeds: {self.get_seed_count()}")
 
 class Tree(Plant):
 	def __init__(self, name, height, age, trunk_diameter: int) -> None:
 		super().__init__(name, height, age)
+		self._stats = Tree.Stats()
 		if(trunk_diameter < 0):
 			print("Trunk Diameter cannot be negative")
 			self._trunk_diameter = 0
@@ -50,7 +57,22 @@ class Tree(Plant):
 			self._trunk_diameter = trunk_diameter
 
 	def produce_shade(self) -> None:
+		self.get_stats().increment_shade_usage()
 		print(f"Tree {self.get_name()} now produces a shade of {self.get_height():.1f}cm long and {self.get_trunk_diameter():.1f}cm wide.")
+	
+	class Stats(Plant.Stats):
+		def __init__(self) -> None:
+			super().__init__()
+			self._shade_count = 0
+
+		def get_shade_count(self) -> int:
+			return self._shade_count
+
+		def set_shade_count(self, shade_count: int) -> None:
+			self._shade_count = shade_count
+
+		def increment_shade_usage(self) -> None:
+			self.set_shade_count(self.get_shade_count() + 1)
 
 class Vegetable(Plant):
 	def __init__(
