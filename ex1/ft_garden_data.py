@@ -1,6 +1,7 @@
 class Plant:
 	def __init__(self, name: str, height: int, age: int) -> None:
 		self.name = name
+		self._stats = Plant.Stats()
 
 		if height < 0:
 			print("Error: Height cannot be negative")
@@ -39,15 +40,18 @@ class Plant:
 		self._height = height
 
 	def show(self) -> None:
+		self._stats.increment_show_usage()
 		print(f"{self.get_name()}: {self.get_height()}cm, "
 			f"{self.get_age()} days old")
 
 	def grow(self, days: int, grow_amount: float) -> None:
+		self._stats.increment_grow_usage()
 		grown_height = self.get_height() + (grow_amount * days)
 		grown_height = round(grown_height, 1)
 		self.set_height(grown_height)
 
 	def age(self, days: int) -> None:
+		self._stats.increment_age_usage()
 		new_age = self.get_age() + days
 		new_age = round(new_age, 1)
 		self.set_age(new_age)
@@ -59,6 +63,52 @@ class Plant:
 	@classmethod
 	def create_anonymous(cls):
 		return cls("Unknown", 0, 0)
+
+	def get_stats(self) -> "Plant.Stats":
+		return self._stats
+
+	class Stats:
+		def __init__(self) -> None:
+			self._grow_count = 0
+			self._age_count = 0
+			self._show_count = 0
+
+		def get_grow_count(self) -> int:
+			return self._grow_count
+
+		def set_grow_count(self, grow_count: int) -> None:
+			self._grow_count = grow_count
+
+		def get_age_count(self) -> int:
+			return self._age_count
+
+		def set_age_count(self, age_count: int) -> None:
+			self._age_count = age_count
+
+		def get_show_count(self) -> int:
+			return self._show_count
+
+		def set_show_count(self, show_count: int) -> None:
+			self._show_count = show_count
+
+		def increment_grow_usage(self) -> None:
+			self.set_grow_count(self.get_grow_count() + 1)
+
+		def increment_age_usage(self) -> None:
+			self.set_age_count(self.get_age_count() + 1)
+
+		def increment_show_usage(self) -> None:
+			self.set_show_count(self.get_show_count() + 1)
+
+		def display(self) -> None:
+			print(f"Grow calls: {self.get_grow_count()}")
+			print(f"Age calls: {self.get_age_count()}")
+			print(f"Show calls: {self.get_show_count()}")
+
+def display_plant_stats(plant: Plant) -> None:
+	print(plant.get_stats().get_show_count())
+	print(plant.get_stats().get_age_count())
+	print(plant.get_stats().get_grow_count())
 
 def dilate_x_days(plant: Plant, days: int, grow_amount: float) -> float:
 	total_growth = 0
@@ -74,7 +124,7 @@ def dilate_x_days(plant: Plant, days: int, grow_amount: float) -> float:
 		plant.grow(1, grow_amount)
 		plant.age(1)
 
-	print(f"--- Day {days} ----")
+	print(f"--- Day {days} ---")
 	print(f"{plant.get_height()}cm, {plant.get_age()} days old\n")
 
 	return round(total_growth, 1)
