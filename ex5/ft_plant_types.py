@@ -14,6 +14,22 @@ class Flower(Plant):
 	def bloom(self) -> None:
 		print(f"{self.get_name()} is blooming beautifully!")
 
+class Seed(Flower):
+	def __init__(
+		self,
+		name: str,
+		height: int,
+		age: int,
+		color: str,
+		seed_count: int
+	) -> None:
+		super().__init__(name, height, age, color)
+		self._seed_count = seed_count
+
+	def show(self) -> None:
+		super().show()
+		print(f"Seeds: {self._seed_count}")
+
 class Tree(Plant):
 	def __init__(self, name, height, age, trunk_diameter: int) -> None:
 		super().__init__(name, height, age)
