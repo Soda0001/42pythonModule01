@@ -14,6 +14,10 @@ class Flower(Plant):
 	def bloom(self) -> None:
 		print(f"{self.get_name()} is blooming beautifully!")
 
+	def show(self) -> None:
+		super().show()
+		print(f"Color: {self.get_color()}")
+
 class Seed(Flower):
 	def __init__(
 		self,
@@ -25,6 +29,10 @@ class Seed(Flower):
 	) -> None:
 		super().__init__(name, height, age, color)
 		self._seed_count = seed_count
+
+	def show(self) -> None:
+		super().show()
+		print(f"Seeds: {self.get_seed_count()}")
 
 	def get_seed_count(self) -> int:
 		return self._seed_count
@@ -55,6 +63,10 @@ class Tree(Plant):
 			self._trunk_diameter = 0
 		else:
 			self._trunk_diameter = trunk_diameter
+
+	def show(self) -> None:
+		super().show()
+		print(f"Trunk diameter: {self.get_trunk_diameter():.1f}cm")
 
 	def produce_shade(self) -> None:
 		self.get_stats().increment_shade_usage()
