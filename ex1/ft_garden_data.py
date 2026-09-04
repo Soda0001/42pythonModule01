@@ -52,6 +52,9 @@ class Plant:
 		new_age = round(new_age, 1)
 		self.set_age(new_age)
 
+	@staticmethod
+	def is_older_than_year(age_by_month: int) -> bool:
+		return age_by_month > 365
 
 def dilate_x_days(plant: Plant, days: int, grow_amount: float) -> float:
 	total_growth = 0
