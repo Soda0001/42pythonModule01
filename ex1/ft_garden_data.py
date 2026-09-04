@@ -56,6 +56,10 @@ class Plant:
 	def is_older_than_year(age_by_month: int) -> bool:
 		return age_by_month > 365
 
+	@classmethod
+	def create_anonymous(cls):
+		return cls("Unknown", 0, 0)
+
 def dilate_x_days(plant: Plant, days: int, grow_amount: float) -> float:
 	total_growth = 0
 
