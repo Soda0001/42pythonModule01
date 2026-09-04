@@ -41,7 +41,7 @@ class Plant:
 
 	def show(self) -> None:
 		self._stats.increment_show_usage()
-		print(f"{self.get_name()}: {self.get_height()}cm, "
+		print(f"{self.get_name()}: {self.get_height():.1f}cm, "
 			f"{self.get_age()} days old")
 
 	def grow(self, days: int, grow_amount: float) -> None:
@@ -61,7 +61,7 @@ class Plant:
 		return age_by_month > 365
 
 	@classmethod
-	def create_anonymous(cls):
+	def create_anonymous(cls) -> "Plant":
 		return cls("Unknown", 0, 0)
 
 	def get_stats(self) -> "Plant.Stats":
