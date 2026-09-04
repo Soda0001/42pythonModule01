@@ -42,6 +42,36 @@ class Plant:
 		print(f"{self.get_name()}: {self.get_height()}cm, "
 			f"{self.get_age()} days old")
 
+	def grow(self, days: int, grow_amount: float) -> None:
+		grown_height = self.get_height() + (grow_amount * days)
+		grown_height = round(grown_height, 1)
+		self.set_height(grown_height)
+
+	def age(self, days: int) -> None:
+		new_age = self.get_age() + days
+		new_age = round(new_age, 1)
+		self.set_age(new_age)
+
+
+def dilate_x_days(plant: Plant, days: int, grow_amount: float) -> float:
+	total_growth = 0
+
+	print("=== Garden Plant Growth ===")
+
+	for i in range(days):
+		total_growth += grow_amount
+
+		print(f"--- Day {i} ---")
+		print(f"{plant.get_height()}cm, {plant.get_age()} days old\n")
+
+		plant.grow(1, grow_amount)
+		plant.age(1)
+
+	print(f"--- Day {days} ----")
+	print(f"{plant.get_height()}cm, {plant.get_age()} days old\n")
+
+	return round(total_growth, 1)
+
 rose		= Plant("Rose", 25, 30)
 sun_flower	= Plant("Sunflower", 80, 45)
 cactus		= Plant("Cactus", 15, 120)
