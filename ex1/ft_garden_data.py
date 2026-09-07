@@ -66,8 +66,6 @@ class Plant:
     def create_anonymous(cls) -> "Plant":
         return cls("Unknown plant", 0, 0)
 
-
-
     def get_stats(self) -> "Plant.Stats":
         return self._stats
 
@@ -116,11 +114,22 @@ def display_plant_stats(plant: Plant) -> None:
     print(plant.get_stats().get_grow_count())
 
 
+def dilate_x_days(plant: Plant, days: int, grow_amount: float) -> float:
+    total_growth = 0
+
+    print("=== Garden Plant Growth ===")
+    for i in range(days):
+        total_growth += grow_amount
+
+        print(f"--- Day {i} ---")
+        print(f"{plant.get_height()}cm, {plant.get_age()} days old\n")
+
+
 if __name__ == "__main__":
     rose = Plant("Rose", 25, 30)
     sun_flower = Plant("Sunflower", 80, 45)
     cactus = Plant("Cactus", 15, 120)
-    
+
     print("=== Garden Plant Register ===\n")
     rose.show()
     sun_flower.show()
