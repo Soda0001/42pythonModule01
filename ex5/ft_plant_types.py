@@ -66,6 +66,9 @@ class Tree(Plant):
         else:
             self._trunk_diameter = trunk_diameter
 
+    def get_stats(self) -> "Tree.Stats":
+        return self._stats
+
     def get_trunk_diameter(self) -> int:
         return self._trunk_diameter
 
