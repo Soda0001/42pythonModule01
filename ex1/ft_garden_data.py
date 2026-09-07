@@ -115,7 +115,7 @@ def display_plant_stats(plant: Plant) -> None:
 
 
 def dilate_x_days(plant: Plant, days: int, grow_amount: float) -> float:
-    total_growth = 0
+    total_growth = 0.0
 
     print("=== Garden Plant Growth ===")
     for i in range(days):
@@ -123,6 +123,8 @@ def dilate_x_days(plant: Plant, days: int, grow_amount: float) -> float:
 
         print(f"--- Day {i} ---")
         print(f"{plant.get_height()}cm, {plant.get_age()} days old\n")
+
+    return total_growth
 
 
 if __name__ == "__main__":

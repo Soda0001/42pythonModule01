@@ -58,7 +58,7 @@ class Tree(Plant):
         trunk_diameter: int
     ) -> None:
         super().__init__(name, height, age)
-        self._stats = Tree.Stats()
+        self._tree_stats = Tree.Stats()
 
         if trunk_diameter < 0:
             print("Trunk Diameter cannot be negative")
@@ -67,7 +67,7 @@ class Tree(Plant):
             self._trunk_diameter = trunk_diameter
 
     def get_stats(self) -> "Tree.Stats":
-        return self._stats
+        return self._tree_stats
 
     def get_trunk_diameter(self) -> int:
         return self._trunk_diameter
@@ -87,7 +87,7 @@ class Tree(Plant):
         )
 
     def produce_shade(self) -> None:
-        self.get_stats().increment_shade_usage()
+        self._tree_stats.increment_shade_usage()
         print(
             f"Tree {self.get_name()} now produces a shade of "
             f"{self.get_height():.1f}cm long and "
