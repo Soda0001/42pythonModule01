@@ -1,4 +1,4 @@
-from	ex1.ft_garden_data import Plant
+from ex1.ft_garden_data import Plant
 
 if __name__ == "__main__":
     print("=== Plant Factory Output ===")
