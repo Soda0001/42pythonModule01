@@ -43,7 +43,10 @@ def dilate_x_days(plant: Plant, days: int, grow_amount: float) -> float:
     for i in range(days):
         total_growth += grow_amount
 
-        print(f"--- Day {i} ---")
+        Plant.grow(plant, 1, grow_amount)
+        Plant.age(plant, 1)
+
+        print(f"--- Day {i + 1} ---")
         print(f"{plant.get_height()}cm, {plant.get_age()} days old\n")
 
     return total_growth
